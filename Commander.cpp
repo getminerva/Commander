@@ -8,16 +8,19 @@
 
 namespace castle {
 
+	//// Commander class
+	// Constructors
 	Commander::Commander() {
 		_rawCmd = "";
 	}
 
-	// Getter and Setter
+	// Getters and Setters
 	String Commander::getRawCmd() {
 		return _rawCmd;
 	}
 
-	bool Commander::isValidCmd(String& s) {
+	bool Commander::isValidMsg(msg_t& s) {
+		// TODO: REDO
 		Serial.print("Testing: ");
 	    Serial.println(s);
 
@@ -71,16 +74,25 @@ namespace castle {
 		return false;
 	}
 
-	void Commander::recvCmd(String msg) {
+	void Commander::recvChunk(String msg) {
 		_rawCmd += msg;
 	}
 
-	void Commander::clearCmd() {
+	void Commander::clearMsgs() {
+		// TODO
+	}
+
+	void Commander::clearMsg() {
 		_rawCmd = "";
 	}
 
-	// Utility function
+	void Commander::clearMsg(int n) {
+		// TODO
+	}
 
+	//// Utility functions
+
+	// Takes a char array and spits out a string
 	String strFromCharArray(uint8_t* buf, uint8_t buflen) {
 		String res = "";
 		for (int i = 0; i < buflen; ++i) {
@@ -88,4 +100,9 @@ namespace castle {
 		}
 		return res;
 	}
+
+	// Takes a msg_t struct and turns it into a string
+	String strFromMsg(msg_t& msg) {
+
+	};
 };
